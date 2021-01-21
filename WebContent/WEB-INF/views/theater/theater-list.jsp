@@ -24,7 +24,7 @@
 		%>
 		<tr>
 			<td><%=theater.get("ti_num")%></td>
-			<td><%=theater.get("ti_name")%></td>
+			<td><a href="/theater/update?ti_num=<%=theater.get("ti_num")%>"><%=theater.get("ti_name")%></a></td>
 			<td><%=theater.get("ti_address")%></td>
 			<td><%=theater.get("ti_phone1")%></td>
 			<td><%=theater.get("ti_phone2")%></td>

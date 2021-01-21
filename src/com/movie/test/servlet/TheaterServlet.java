@@ -36,6 +36,11 @@ public class TheaterServlet extends HttpServlet {
 			request.setAttribute("list", theaterList);
 		}else if("insert".equals(cmd)) {
 			path = "/theater/theater-insert";
+		}else if("update".equals(cmd)) {
+			path = "/theater/theater-update";
+			String tiNum = request.getParameter("ti_num");
+			Map<String,String> theater = tService.selectTheater(Integer.parseInt(tiNum));
+			request.setAttribute("theater", theater);
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(PREFIX + path + SUFFIX);
@@ -61,8 +66,28 @@ public class TheaterServlet extends HttpServlet {
 				msg = "영화관 등록이 실패하였습니다.";
 			}
 			request.setAttribute("msg", msg);
+		}else if("update".equals(cmd)) {
+			Map<String,String> theater = new HashMap<String,String>();
+			theater.put("ti_name",request.getParameter("ti_name"));
+			theater.put("ti_address",request.getParameter("ti_address"));
+			theater.put("ti_phone1",request.getParameter("ti_phone1"));
+			theater.put("ti_phone2",request.getParameter("ti_phone2"));
+			theater.put("ti_num", request.getParameter("ti_num"));
+			int cnt = tService.updateTheater(theater);
+			String msg = "영화관 수정이 성공하였습니다.";
+			if(cnt!=1) {
+				msg = "영화관 수정이 실패하였습니다.";
+			}
+			request.setAttribute("msg", msg);
+		}else if("delete".equals(cmd)) {
+			String tiNum = request.getParameter("ti_num");
+			int cnt = tService.deleteTheater(Integer.parseInt(tiNum));
+			String msg = "영화관이 삭제되었습니다.";
+			if(cnt!=1) {
+				msg = "영화관 삭제가 실패하였습니다.";
+			}
+			request.setAttribute("msg", msg);
 		}
-		
 		RequestDispatcher rd = request.getRequestDispatcher(PREFIX + "/theater/result" + SUFFIX);
 		rd.forward(request, response);		
 	}

@@ -9,10 +9,36 @@
     <servlet-name>TheaterServlet</servlet-name>
     <servlet-class>com.movie.test.servlet.TheaterServlet</servlet-class> 
   </servlet>
-  
   <servlet-mapping>
     <servlet-name>TheaterServlet</servlet-name>
     <url-pattern>/theater/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.movie.test.servlet.UploadServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/fileupload/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ParkServlet</servlet-name>
+    <servlet-class>com.movie.test.servlet.ParkServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ParkServlet</servlet-name>
+    <url-pattern>/park/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>FoodServlet</servlet-name>
+    <servlet-class>com.movie.test.servlet.FoodServlet</servlet-class> 
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FoodServlet</servlet-name>
+    <url-pattern>/food/*</url-pattern>
   </servlet-mapping>
   
 </web-app>

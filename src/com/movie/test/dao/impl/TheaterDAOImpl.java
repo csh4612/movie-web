@@ -73,6 +73,7 @@ public class TheaterDAOImpl implements TheaterDAO {
 	public int insertTheater(Map<String, String> theater) {
 		Connection con = DBConn.getConn();
 		PreparedStatement ps = null;
+		int cnt = 0;
 		try {
 			String sql = "insert into theater_info(ti_num, ti_name, ti_address, ti_phone1, ti_phone2)";
 			sql += " values(seq_ti_num.nextval, ?,?,?,?)";
@@ -82,7 +83,7 @@ public class TheaterDAOImpl implements TheaterDAO {
 			ps.setString(3, theater.get("ti_phone1"));
 			ps.setString(4, theater.get("ti_phone2"));
 			
-			int cnt = ps.executeUpdate();
+			cnt = ps.executeUpdate();
 			DBConn.commit(con);
 			return cnt;
 		}catch(Exception e) {
@@ -90,13 +91,14 @@ public class TheaterDAOImpl implements TheaterDAO {
 		}finally {
 			DBConn.close(con,ps);
 		}
-		return 0;
+		return cnt;
 	}
 
 	@Override
 	public int updateTheater(Map<String, String> theater) {
 		Connection con = DBConn.getConn();
 		PreparedStatement ps = null;
+		int cnt = 0;
 		try {
 			String sql = "update theater_info";
 			sql += " set ti_name=?,";
@@ -112,15 +114,15 @@ public class TheaterDAOImpl implements TheaterDAO {
 			ps.setString(4, theater.get("ti_phone2"));
 			ps.setString(5, theater.get("ti_num"));
 			
-			int cnt = ps.executeUpdate();
+		    cnt = ps.executeUpdate();
 			DBConn.commit(con);
-			return cnt;
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			DBConn.close(con,ps);
 		}
-		return 0;
+		return cnt;
 	}
 
 	@Override

@@ -11,7 +11,6 @@
 String msg = (String)request.getAttribute("msg");
 out.println(msg);
 %>
-<br><a href="/park/list">주차장 리스트로 돌아가기</a>
-<br><a href="/theater/list">영화관 리스트로 돌아가기</a>
+<br><a href="/food/list">음식 리스트로 돌아가기</a>
 </body>
 </html>
